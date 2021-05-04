@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="s-container">
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+        <div class="s-item"></div>
+    </div>
+    
+</body>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .s-container {
+        display: flex;
+        flex-direction: row;
+        height: 500px;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10%;
+        background: url("./bg-1.jpg") repeat fixed;
+        background-position: 65% 15%;
+        object-fit: cover;
+        overflow: hidden;
+        width: fit-content;
+        /* transition: all 8.5s ease-in-out; */
+        margin: auto;
+        margin-top: 10%;
+        z-index: 5;
+    }
+    .s-item {
+        width: 50px;
+        height: 100%;
+        background-position: 65% 15%;
+        transition: all 3.5s ease-in-out;
+        background: url("./bg-2.jpg") repeat fixed;
+        background-position: 65% 15%;
+        object-fit: cover;
+        overflow: hidden;
+        /* border-right: 1px solid #000; */
+        z-index: 4;
+        display: inline-block;
+    }
+    .s-item:last-child {
+        /* border-right: none; */
+    }
+    .s-item:hover {
+        transition: all 0s linear;
+        opacity: 0;
+    }
+</style>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="c-container">
+        <div class="c-header-container">
+            <div class="c-header-menu">
+                <div class="c-header-item c-header-home">
+                    <span class="material-icons">
+                        home
+                    </span>
+                    <span class="c-txt">Home</span>
+                </div>
+                <div class="c-header-item c-header-profile">
+                    <span class="material-icons">
+                        person
+                    </span>
+                    <span class="c-txt">Profile</span>
+                </div>
+                <div class="c-header-item c-header-sms">
+                    <span class="material-icons">
+                        sms
+                    </span>
+                    <span class="c-txt">Message</span>
+                </div>
+                <div class="c-header-item c-header-help">
+                    <span class="material-icons">
+                        help
+                    </span>
+                    <span class="c-txt">Help</span>
+                </div>
+                <div class="c-header-item c-header-setting">
+                    <span class="material-icons">
+                        settings
+                    </span>
+                    <span class="c-txt">Setting</span>
+                </div>
+                <div class="c-header-item c-header-password">
+                    <span class="material-icons">
+                        lock
+                    </span>
+                    <span class="c-txt">Password</span>
+                </div>
+                <div class="c-header-item c-header-log-out">
+                    <span class="material-icons">
+                        logout
+                    </span>
+                    <span class="c-txt">Sign Out</span>
+                </div>
+                <div class="c-arrow-toggle">
+                    <span class="material-icons c-open-icon c-display-hidden">
+                        navigate_next
+                    </span>
+                    <span class="material-icons c-close-icon">
+                        chevron_left
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    html {
+        font-family: 'Poppins', sans-serif;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #794fe2;
+    }
+    .c-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .c-header-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        width: 230px;
+        margin: auto;
+        border-radius: 7px;
+        transition: all 0.5s ease-in-out;
+    }
+    .c-header-menu {
+        width: 100%;
+        position: relative;
+    }
+    .c-header-item {
+        padding: 15px 25px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+    }
+    .c-header-item:first-child{
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+    }
+    .c-header-item:nth-last-child(2) {
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
+    .c-header-item:hover {
+        background-color: #efefef;
+    }
+    .c-txt {
+        color: #794fe2;
+        font-weight: 600;
+        margin-left: 2rem;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+    }
+    .material-icons {
+        color: #794fe2;
+        font-size: 25px;
+        cursor: pointer;
+    }
+    .c-arrow-toggle {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        right: -20px;
+        top: calc(50% - 20px);
+        border: 4px solid #794fe2;
+        border-radius: 50%;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+    }
+    .c-arrow-toggle:focus-visible {
+        outline: none;
+    }
+    .c-open-icon, .c-close-icon {
+        font-size: 32px !important;
+    }
+    .c-display-hidden {
+        display: none;
+    }
+    .c-display-block {
+        display: block;
+    }
+    .c-width-80px {
+        width: 80px;
+    }
+</style>
+<script>
+    let toggle = true;
+    $(".c-arrow-toggle").click(function(){
+        this.toggle = !this.toggle;
+        if (this.toggle) {
+            let arrList = document.getElementsByClassName("c-txt");
+            for (let i = 0; i < arrList.length; i++) {
+                arrList[i].classList.add("c-display-hidden");
+            }
+            document.getElementsByClassName("c-open-icon")[0].classList.add("c-display-block");
+            document.getElementsByClassName("c-close-icon")[0].classList.add("c-display-hidden");
+            document.getElementsByClassName("c-header-container")[0].style.width = "80px";
+        } else {
+            let arrList = document.getElementsByClassName("c-txt");
+            for (let i = 0; i < arrList.length; i++) {
+                arrList[i].classList.remove("c-display-hidden");
+            }
+            document.getElementsByClassName("c-close-icon")[0].classList.remove("c-display-hidden");
+            document.getElementsByClassName("c-open-icon")[0].classList.remove("c-display-block");
+            document.getElementsByClassName("c-header-container")[0].style.width = "230px";
+        }
+    })
+</script>
+</html>
