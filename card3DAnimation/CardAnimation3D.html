@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="a-container">
+        <div class="a-card-container">
+            <div class="a-card">
+                <div class="a-card-top">
+                    <div class="a-circle"></div>
+                    <img src="./adidas.png" alt="Shoes" id='a-img-product'>
+                </div>
+                <div class="a-card-content">
+                    <div class="a-title-container">
+                        <div class="a-card-title">Adidas ZX</div>
+                        <div class="a-price">$450.00</div>
+                    </div>
+                    <div class="a-card-description">future-ready trainers with wrapped boost for exception comfort.</div>
+                    <div class="a-card-list-size">
+                        <div class="a-size-item">39</div>
+                        <div class="a-size-item">40</div>
+                        <div class="a-size-item">41</div>
+                        <div class="a-size-item">42</div>
+                        <div class="a-size-item">43</div>
+                    </div>
+                </div>
+                <div class="a-card-event">
+                    <div class="a-card-button">Purchase</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let container = document.getElementsByClassName('a-container')[0];
+    let card = document.getElementsByClassName('a-card-container')[0];
+    let cardItem = document.getElementsByClassName('a-card')[0];
+
+    let imgProduct = document.getElementById('a-img-product');
+    let title = document.getElementsByClassName('a-card-title')[0];
+    let button = document.getElementsByClassName('a-card-button')[0];
+    let des = document.getElementsByClassName('a-card-description')[0];
+    let price = document.getElementsByClassName('a-price')[0];
+    let itemSize = document.getElementsByClassName('a-size-item');
+
+
+    card.addEventListener('mousemove', function(e) {
+        console.log(e)
+        let tranX = (window.innerWidth / 2 - e.pageX) / 10;
+        let tranY = (window.innerHeight / 2 - e.pageY) / 10;
+        card.style.transform = `rotateY(${tranY}deg) rotateX(${tranX}deg)`;
+
+        imgProduct.style.transform = `translateZ(50px) rotateZ(-20deg)`;
+        title.style.transform = 'translateZ(45px)';
+        price.style.transform = 'translateZ(45px)';
+        button.style.transform = 'translateZ(40px)';
+        des.style.transform = 'translateZ(40px)';
+        for(let i = 0; i < itemSize.length; i++) {
+            itemSize[i].style.transform = 'translateZ(40px)';
+        }
+    })
+
+    card.addEventListener('mouseenter', function(e) {
+        card.style.transition = 'none';
+    })
+
+    card.addEventListener('mouseleave', function(e) {
+        card.style.transition = 'all 1.75s ease-out';
+        card.style.transform = `rotateY(0deg) rotateX(0deg)`
+
+        imgProduct.style.transform = 'translateZ(0px) rotateZ(0deg)';
+        title.style.transform = 'translateZ(0px)';
+        button.style.transform = 'translateZ(0px)';
+        des.style.transform = 'translateZ(0px)';
+        price.style.transform = 'translateZ(0px)';
+        for(let i = 0; i < itemSize.length; i++) {
+            itemSize[i].style.transform = 'translateZ(0px)';
+        }
+    })
+</script>
+<style>
+    * {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Poppins', sans-serif;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+    }
+    .a-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80vw;
+        perspective: 1050px;
+    }
+    .a-card-container {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        border-radius: 7px;
+        box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+        perspective: 450px;
+        transform-style: preserve-3d;
+        /* background: orange; */
+    }
+    .a-card {
+        padding: 1rem;
+        min-height: 450px;
+        background: #fff;
+        background: linear-gradient(
+          to right bottom, 
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.3));
+        border-radius: 10px;
+    }
+    .a-card-top {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 9rem;
+    }
+    .a-circle {
+        position: absolute;
+        width: 6.5rem;
+        height: 6.5rem;
+        border-radius: 50%;
+        background: linear-gradient(
+            to right bottom,
+            rgba(245, 70, 66, 0.75),
+            rgba(8, 83, 156, 0.75)
+        );
+        z-index: 1;
+    }
+    img {
+        transition: all 1s ease-out;
+        width: 8rem;
+        z-index: 2;
+    }
+    .a-card-content {
+        padding: 0.75rem 0;
+    }
+    .a-title-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    .a-price {
+        font-weight: 700;
+        transition: all 0.75s ease-out;
+    }
+    .a-card-title {
+        font-weight: bold;
+        font-size: 1.5rem;
+        padding: 5px 0px;
+        transition: all 0.75s ease-out;
+    }
+    .a-card-description {
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        line-height: 1.1rem;
+        white-space: 10px;
+        margin-bottom: 0.5rem;
+        transition: all 0.75s ease-out;
+    }
+    .a-card-list-size {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .a-size-item {
+        padding: 7px 20px;
+        font-size: 14px;
+        background: #fff;
+        background: linear-gradient(
+          to right bottom, 
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.8));
+        text-align: center;
+        margin: 5px 5px;
+        border-radius: 15px;
+        width: 25%;
+        cursor: pointer;
+        transition: all 0.75s ease-out;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .a-size-item:hover {
+        background: linear-gradient(
+            rgba(240, 248, 255, 0.7),
+            rgba(240, 248, 255, 1)
+        );
+        transition: all 0s ease-out;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0px 0px 2px rgba(0, 0, 0, 0.2);
+    }
+    .a-card-event {
+        margin-top: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+    .a-card-button {
+        border-radius: 15px;
+        width: 100%;
+        padding: 7px 15px;
+        text-align: center;
+        background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+        filter: blur(2);
+        color: #fff;
+        font-weight: bold;
+        transition: all 0.75s ease-out;
+        cursor: pointer;
+    }
+    .a-card-button:hover {
+        background: #58d6bf;
+        color: white;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0px 0px 2px rgba(0, 0, 0, 0.2);
+    }
+</style>
+</html>
